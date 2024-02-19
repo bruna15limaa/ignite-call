@@ -1,12 +1,10 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Heading } from '@ignite-ui/react'
+
+
 
 export default function Home() {
   return (
-   <h1>Hello World</h1>
+   <Heading>Hello World</Heading>
   );
 }
