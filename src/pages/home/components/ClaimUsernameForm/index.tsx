@@ -40,7 +40,7 @@ const ClaimUsernameFormSchema = z.object({
 
       </Form>
       <FormAnotation>
-              <Text >
+              <Text size="sm">
                   {errors.username
                       ? errors.username.message
                       : 'Digite o nome do usuário desejado'}
