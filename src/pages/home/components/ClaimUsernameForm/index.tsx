@@ -31,7 +31,8 @@ const ClaimUsernameFormSchema = z.object({
     }
  
   return (
-    <><Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
+    <>
+    <Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
           <TextInput size="sm" prefix="ignite.com/" placeholder="seu-usuário" {...register('username')} />
           <Button size="sm" type="submit">
               Reservar
@@ -45,6 +46,7 @@ const ClaimUsernameFormSchema = z.object({
                       ? errors.username.message
                       : 'Digite o nome do usuário desejado'}
               </Text>
-          </FormAnotation></>
+          </FormAnotation>
+          </>
   )
 }
