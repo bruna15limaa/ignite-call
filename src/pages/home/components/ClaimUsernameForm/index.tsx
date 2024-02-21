@@ -1,6 +1,6 @@
-import { Button, TextInput } from '@ignite-ui/react'
+import { Button, Text, TextInput } from '@ignite-ui/react'
 import { ArrowRight } from 'phosphor-react'
-import { Form } from './styles'
+import { Form, FormAnotation } from './styles'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -31,13 +31,20 @@ const ClaimUsernameFormSchema = z.object({
     }
  
   return (
-    <Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
-      <TextInput size="sm" prefix="ignite.com/" placeholder="seu-usuário" {...register('username')} />
-      <Button size="sm" type="submit">
-        Reservar
-        <ArrowRight />
-      </Button>
-      {errors.username?.message}
-    </Form>
+    <><Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
+          <TextInput size="sm" prefix="ignite.com/" placeholder="seu-usuário" {...register('username')} />
+          <Button size="sm" type="submit">
+              Reservar
+              <ArrowRight />
+          </Button>
+
+      </Form>
+      <FormAnotation>
+              <Text >
+                  {errors.username
+                      ? errors.username.message
+                      : 'Digite o nome do usuário desejado'}
+              </Text>
+          </FormAnotation></>
   )
 }
