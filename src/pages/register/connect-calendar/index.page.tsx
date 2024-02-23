@@ -3,9 +3,10 @@ import { ArrowRight } from 'phosphor-react'
 // import { api } from "../../../lib/axios"
 import { Container, Header } from '../styles'
 import { ConnectBox, ConnectItem } from './styles'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 
 export default function Register() {
+
   // async function handleRegister() {
 
   // }
