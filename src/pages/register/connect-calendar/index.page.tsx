@@ -1,5 +1,5 @@
 import { Button, Heading, MultiStep, Text } from '@ignite-ui/react'
-import { ArrowRight } from 'phosphor-react'
+import { ArrowRight, Check } from 'phosphor-react'
 // import { api } from "../../../lib/axios"
 import { Container, Header } from '../styles'
 import { AuthError, ConnectBox, ConnectItem } from './styles'
@@ -11,6 +11,11 @@ const session = useSession()
 const router = useRouter()
 
 const hasAuthError = !!router.query.error
+const isSignedId = session.status === 'authenticated'
+
+async function handleConnectCalendar() {
+  await signIn('google')
+}
   // async function handleRegister() {
 
   // }
@@ -30,13 +35,21 @@ const hasAuthError = !!router.query.error
       <ConnectBox>
         <ConnectItem>
           <Text>Google Calendar</Text>
-          <Button variant="secondary" 
-            size="sm" 
-            onClick={() => signIn('google')}
+          {!isSignedId ? (
+            <Button size="sm" disabled>
+              Conectado
+              <Check />
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={handleConnectCalendar}
             >
-            Conectar
-            <ArrowRight />
-          </Button>
+              Conectar
+              <ArrowRight />
+            </Button>
+          )}
         </ConnectItem>
 
         {hasAuthError && (
@@ -46,7 +59,7 @@ const hasAuthError = !!router.query.error
             </AuthError>
         )}
 
-        <Button type="submit">
+        <Button type="submit" disabled={!isSignedId}>
           Próximo passo
           <ArrowRight />
         </Button>
